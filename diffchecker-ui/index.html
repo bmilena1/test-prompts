@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy-first Diffchecker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="toolsSidebar">
+      <h2>Tools</h2>
+      
+      <div class="toolGroup">
+        <label>Layout</label>
+        <div class="radioGroup">
+          <label><input type="radio" name="layout" value="split" checked /> Split</label>
+          <label><input type="radio" name="layout" value="unified" /> Unified</label>
+        </div>
+      </div>
+
+      <div class="toolGroup">
+        <label>Diff Granularity</label>
+        <div class="radioGroup">
+          <label><input type="radio" name="granularity" value="word" checked /> Word</label>
+          <label><input type="radio" name="granularity" value="char" /> Char</label>
+        </div>
+      </div>
+
+      <div class="toolGroup">
+        <label><input type="checkbox" id="hideUnchanged" /> Hide unchanged lines</label>
+      </div>
+
+      <div class="toolGroup">
+        <label><input type="checkbox" id="caseSensitive" /> Case-sensitive</label>
+      </div>
+    </aside>
+
+    <main>
+    <h1>Privacy-first Diffchecker</h1>
+    <p class="note">Inputs are processed in-memory only and are not stored or uploaded.</p>
+
+    <section class="editors" id="editorsSection">
+      <div class="pane">
+        <label for="oldText">Original</label>
+        <div class="editorWrap">
+          <textarea id="oldText" placeholder="Paste original text or code here..."></textarea>
+        </div>
+        <div class="fileControls">
+          <button id="oldPasteBtn" type="button">Paste into Original</button>
+          <label for="oldLang">Language:</label>
+          <select id="oldLang">
+            <option value="auto">Auto</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="html">HTML</option>
+            <option value="json">JSON</option>
+            <option value="markdown">Markdown</option>
+          </select>
+        </div>
+      </div>
+      <div class="pane">
+        <label for="newText">Revised</label>
+        <div class="editorWrap">
+          <textarea id="newText" placeholder="Paste revised text or code here..."></textarea>
+        </div>
+        <div class="fileControls">
+          <button id="newPasteBtn" type="button">Paste into Revised</button>
+          <label for="newLang">Language:</label>
+          <select id="newLang">
+            <option value="auto">Auto</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="html">HTML</option>
+            <option value="json">JSON</option>
+            <option value="markdown">Markdown</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button id="compareBtn">Compare</button>
+      <button id="clearBtn">Clear</button>
+      <button id="copyBtn">Copy Diff</button>
+    </div>
+    <p class="note small">Highlights show the exact words and characters that changed (word-level precision).</p>
+
+    <footer>
+      <small>Built for quick, private comparisons — no content is stored.</small>
+    </footer>
+  </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/diff@5/dist/diff.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/markdown/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/clike/clike.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
